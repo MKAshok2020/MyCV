@@ -1,0 +1,13 @@
+/* card cs-border-color{
+    --bs-border-opacity: 1 !important;
+    border-color: rgb(6 121 223) !important;
+} */
+
+.custom-border {
+  border: 2px solid #3f76ab !important; /* Use !important to ensure override */
+  
+}
+
+.intro-font{
+  font-size: 0.75rem!important;
+}
