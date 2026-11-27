@@ -17,7 +17,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "predeploy:pdf": "node scripts/sync-deploy-pdf.js",
+    "build": "npm run predeploy:pdf && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
