@@ -1,127 +1,211 @@
-import React from 'react'
-import "../index.css"
-import "../css/workExperience.css"
-import '@fortawesome/fontawesome-free/css/all.min.css' 
-import 'bootstrap/dist/css/bootstrap.min.css' 
+import React, { useState } from "react";
+import experienceData from "../data/experienceData";
+import "../css/experience.css";
 
-const workExperience = () => {
-  return (
-     
-  <section id="WorkExperience" className="container my-3">
-		<h3 className='text-left' >Work Experience</h3>
-		<div className="row text-left">
-			<div className="col-md-5">
-				<div className="mb-4">
-					<h4>Senior Consultant</h4>
-					<p><strong>Deep Identity Pte Ltd</strong>, Singapore <br/> (Feb 2018 - Jul 2025)</p>
-					<ul className="smallfont">
-						<li>Technical Lead and Scrum Master</li>
-						<li>Set up fast IT development environment and transitioned to Agile and DevOps practices</li>
-						<li>Managed and delivered large-scale enterprise IAM solutions</li>
-						<li>Designed and implemented enterprise IAM solutions using OAuth2.0, SAML, and OpenID Connect</li>
-					</ul>
-				</div>
-			</div>
-			<div className="col-md-7 smallfont role" >
-				<ul>
-					<li> Developing and maintaining best practices, knowledge and change management policies </li>
-					<li> Act as a scrum master, set up and animate agile ceremonies, handle impediments </li>
-					<li> Designed and implemented enterprise IAM solutions using OAuth2.0, SAML, and OpenID Connect.
-					</li>
-					<li> Remediate OWASP dependency check & vulnerable issues </li>
-					<li> Design, Estimation, liaise with client on timeline and Implementation of change request</li>
-					<li> Developed custom IAM connectors for SAP HEC & SuccessFactors (HRMS) </li>
-					<li> Mobile apps release management in Android and iOS platform</li>
-					<li> Set SLA, optimize production monitoring and incidents management</li>
-					<li> Steer project portfolio, epic and features delivery, communicate and report to regional
-						C-levels </li>
-				</ul>
-			</div>
+// Load ONLY .png files from ../asset/logo
+const pngContext = require.context("../asset/logo", false, /\.png$/i);
 
-		</div>
+const pngLogoMap = pngContext.keys().reduce((acc, key) => {
+  // "./TCS.png" -> "tcs"
+  const baseName = key.replace(/^\.\//, "").replace(/\.png$/i, "").toLowerCase();
+  const mod = pngContext(key);
+  acc[baseName] = typeof mod === "string" ? mod : mod?.default || null;
+  return acc;
+}, {});
 
-		<div className="row  my-3 text-left">
-			<div className="col-md-5">
-				<div className="mb-4">
-					<h4>Assistant Consultant</h4>
-					<p><strong>Tata Consultancy Services</strong>, Bengaluru, Karnataka, India <br/> (Oct 2015 - Feb 2018)</p>
-					<ul className="smallfont">
-						<li>Offshore Coordinator and Technical Lead</li>
-						<li>Coordinated teams, task allocation, and appraisal processes</li>
-						<li>Developed and monitored project KPIs and ensured timely delivery</li>
-					</ul>
-				</div>
-			</div>
-			<div className="col-md-7 smallfont role">
-					<ul>
-						<li>Act as the primary point of contact between the onshore (client-side) and offshore (remote) teams </li>
-						<li>Ensure clear and timely communication to avoid misunderstandings or delays</li>
-						<li>Coordinate status updates, daily/weekly calls, and project reviews</li>
-						<li>Create and share detailed progress reports with onshore stakeholders</li>
-						<li>Track and report key performance indicators (KPIs) for offshore team productivity</li>
-						<li>manage hiring process and SOW renewal</li>
-						<li>Distribute tasks to offshore team members based on their expertise and availability</li>
-						<li>Monitor the progress of tasks and ensure deadlines are met</li>
-						<li>Escalate delays or blockers to relevant stakeholders</li> 
-					</ul>				 
-			</div>
-		</div>
+function getPngAssetUrl(shortName) {
+  const key = shortName?.trim().toLowerCase();
+  if (!key) return null;
+  return pngLogoMap[key] || null;
+}
 
-		<div className="row my-3 text-left">
-			<div className="col-md-5">
-				<div className="mb-4">
-					<h4>Technical Lead</h4>
-					<p><strong>Healthfore Technologies</strong>, Bengaluru, Karnataka, India <br/>
-                    (Mar 2010 - Oct 2015)</p>
-					<ul className="smallfont ">
-						<li>Led the product engineering team for healthcare solutions</li>
-						<li>Managed L3 support for multiple clients</li>
-						<li>Designed and implemented integration with clinical laboratory systems</li>
-						<li>Ensured HL7 compliance and optimized report queries</li>
-					</ul>
-				</div>
-			</div>
-			<div className="col-md-7 smallfont role" >
-				<ul><li>Design, Cost Estimation, and Implementation of change request </li> 
-					<li>L3 support for multiple client</li>
-					<li>Pre-sales development</li>
-					<li>Integrate drug database like VIDAL, CIMS & LEXI</li>
-					<li>Integrate clinical laboratory system with LIMS module.</li>
-					<li>Maintain HL7 compliance</li>
-					<li>Preparing installation package</li>
-					<li>Designed reports and worked on query optimizations.</li>
-				</ul>
-			</div>
-		</div>
+function CompanyMark({ experience }) {
+  const [imgError, setImgError] = useState(false);
 
-		<div className="row my-3 text-left">
-			<div className="col-md-5">
-				<div className="mb-4">
-					<h4>Senior Software Engineer</h4>
-					<p><strong>Sobha Renaissance Information Technology</strong>, Bengaluru, Karnataka, India (May 2006 - Mar 2010)</p>
-					<ul className="smallfont ">
-						<li>Developed and enhanced system modules</li>
-						<li>Implemented change requests and supported application deployment</li>
-						<li>Designed user interfaces and optimized database queries</li>
-						<li>Prepared installation packages and provided technical documentation</li>
-					</ul>
-				</div>
-			</div>
-			<div className="col-md-7 smallfont role" >
-				<ul>
-					<li> Involved coding</li>
-					<li> Developed system modules</li>
-					<li> Change Request Implementation and Support</li>
-					<li> Preparing installation package </li>
-					<li> Designed Reports and worked on Query optimizations </li>
-					<li> User interface designing </li>
-					<li> Module enhancement and bug fixes	</li>					
-				</ul>
-			</div>
-		</div> 
-	</section>
+  const logoSrc = !imgError ? getPngAssetUrl(experience?.shortName) : null;
+  const fallbackLabel =
+    experience?.shortName?.trim() || experience?.company?.[0] || "E";
 
+  if (logoSrc) {
+    return React.createElement("img", {
+      src: logoSrc,
+      alt: `${experience.company} logo`,
+      className: "experience-company-mark",
+      onError: () => setImgError(true)
+    });
+  }
+
+  return React.createElement(
+    "div",
+    { className: "experience-company-mark", "aria-hidden": "true" },
+    fallbackLabel
   );
 }
 
-export default workExperience
+function TechBadge({ children }) {
+  return React.createElement(
+    "span",
+    { className: "experience-tech-badge" },
+    children
+  );
+}
+
+function ExperienceCard({ experience }) {
+  const [expanded, setExpanded] = useState(false);
+
+  return React.createElement(
+    "article",
+    { className: "experience-card" },
+    React.createElement(
+      "div",
+      { className: "experience-card-top" },
+      React.createElement(
+        "div",
+        { className: "experience-heading" },
+
+        
+        React.createElement("div",
+          { className: "experience-company-row" },
+          React.createElement(CompanyMark, { experience }),
+          React.createElement("h3", null, experience.company),
+          React.createElement(
+            "span",
+            { className: "experience-location" },
+            experience.location
+          )
+        ),
+        React.createElement("p", { className: "experience-role" }, experience.role),
+        React.createElement(
+          "div",
+          { className: "experience-meta" },
+          React.createElement("span", null, experience.period),
+          experience.employmentType &&
+            React.createElement(
+              React.Fragment,
+              null,
+              React.createElement("span", { className: "experience-meta-dot" }, "•"),
+              React.createElement("span", null, experience.employmentType)
+            )
+        )
+      ),
+      React.createElement(
+        "button",
+        {
+          className: "experience-toggle",
+          type: "button",
+          onClick: () => setExpanded((value) => !value),
+          "aria-expanded": expanded,
+          "aria-label": `${expanded ? "Collapse" : "Expand"} ${experience.company}`
+        },
+        React.createElement("span", null, expanded ? "−" : "+")
+      )
+    ),
+    React.createElement(
+      "p",
+      { className: "experience-summary" },
+      experience.summary
+    ),
+    expanded &&
+      React.createElement(
+        "div",
+        { className: "experience-expanded" },
+        experience.highlights?.length > 0 &&
+          React.createElement(
+            "section",
+            { className: "experience-subsection" },
+            React.createElement("h4", null, "Key responsibilities & achievements"),
+            React.createElement(
+              "ul",
+              { className: "experience-highlights" },
+              experience.highlights.map((item, itemIndex) =>
+                React.createElement(
+                  "li",
+                  { key: `${experience.id}-highlight-${itemIndex}` },
+                  item
+                )
+              )
+            )
+          ),
+        experience.projects?.length > 0 &&
+          React.createElement(
+            "section",
+            { className: "experience-subsection" },
+            React.createElement("h4", null, "Selected projects"),
+            React.createElement(
+              "div",
+              { className: "experience-project-grid" },
+              experience.projects.map((project) =>
+                React.createElement(
+                  "div",
+                  { className: "experience-project", key: project.name },
+                  React.createElement("h5", null, project.name),
+                  React.createElement("p", null, project.description),
+                  project.impact && React.createElement("span", null, project.impact)
+                )
+              )
+            )
+          ),
+        experience.technologies?.length > 0 &&
+          React.createElement(
+            "section",
+            { className: "experience-subsection" },
+            React.createElement("h4", null, "Technologies & expertise"),
+            React.createElement(
+              "div",
+              { className: "experience-tech-list" },
+              experience.technologies.map((technology) =>
+                React.createElement(TechBadge, { key: technology }, technology)
+              )
+            )
+          )
+      )
+  );
+}
+
+export default function WorkExperience() {
+  return React.createElement(
+    "section",
+    { className: "professional-experience", id: "experience" },
+    React.createElement(
+      "div",
+      { className: "experience-container" },
+      React.createElement(
+        "div",
+        { className: "experience-intro" },
+        React.createElement("h3", null, "Professional Experience"),
+        React.createElement(
+          "p",
+          null,
+          "Building enterprise solutions, leading engineering teams, and architecting secure, scalable systems."
+        )
+      ),
+      React.createElement(
+        "div",
+        { className: "experience-stats", "aria-label": "Career highlights" },
+        React.createElement(
+          "div",
+          { className: "experience-stat" },
+          React.createElement("strong", null, "20+"),
+          React.createElement("span", null, "Years of experience")
+        )
+      ),
+      React.createElement(
+        "div",
+        { className: "experience-timeline" },
+        experienceData.map((experience) =>
+          React.createElement(
+            "div",
+            { className: "experience-timeline-item", key: experience.id }, 
+            React.createElement(
+              "div",
+              { className: "experience-timeline-marker" },
+              React.createElement("span", null, experience.period),
+              React.createElement("span", { className: "experience-timeline-dot", "aria-hidden": "true"  })
+            ),
+            React.createElement(ExperienceCard, { experience})
+          )
+        )
+      )
+    )
+  );
+}

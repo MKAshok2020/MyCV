@@ -3,9 +3,9 @@
 export const globalConstants = {
     UrlPaths: {
         Projects: "Projects",
-        WorkExperience: "WorkExperience",
+        WorkExperience: "workExperience",
         Education: "Education",
-        Skills: "Skills",
+        Skills: "TechnicalSkills",
         Introduction: "",
     },
     LinkedInPath : "https://www.linkedin.com/in/mk-ashok/",

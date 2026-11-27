@@ -10,7 +10,7 @@ import {globalConstants} from "./Helpers/constants"
 
 const WorkExperience = lazy(() => import('./components/workExperience'));
 const Education = lazy(()=> import('./components/education'));
-const Skills = lazy(()=> import('./components/skills'));
+const TechnicalSkills = lazy(()=> import('./components/TechnicalSkills'));
 const Projects = lazy(()=> import('./components/projects'));
 
 function App() {
@@ -34,8 +34,8 @@ function App() {
           <Route path={`/${globalConstants.UrlPaths.Education}`}
                  element={<Education />} />
 
-           <Route path={`/${globalConstants.UrlPaths.Skills}`}
-                 element={<Skills />} />
+           <Route path={`/${globalConstants.UrlPaths.TechnicalSkills}`}
+                 element={<TechnicalSkills />} />
 
            <Route path={`/${globalConstants.UrlPaths.Projects}`}
                  element={<Projects />} />

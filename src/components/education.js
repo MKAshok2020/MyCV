@@ -1,92 +1,173 @@
-import React from 'react'
-import "../index.css"
-import "../css/workExperience.css"
-import '@fortawesome/fontawesome-free/css/all.min.css' 
-import 'bootstrap/dist/css/bootstrap.min.css' 
+import React from "react";
+import "../css/education.css";
 
-const education = () => {
-  return (
- 
-      <section id="Education & Certification" className="container my-3">
-		<h3 className='text-left'>Education & Certification</h3>
+const EDUCATION_ITEMS = [
+  {
+    id: "mca",
+    degree: "Master of Computer Applications",
+    institution: "Madras University",
+    location: "Chennai, India",
+    period: "2000 – 2003"
+  },
+  {
+    id: "bsc",
+    degree: "Bachelor of Computer Science",
+    institution: "Bharathiar University",
+    location: "Coimbatore, India",
+    period: "1996 – 1999"
+  }
+];
 
+const CERTIFICATION_ITEMS = [
+  {
+    id: "aws-saa",
+    title: "AWS Certified Solutions Architect – Associate",
+    issuer: "Amazon Web Services",
+    badgeSrc: require("../content/resources/AWS-Certified-SA-Associate_badge.png")
+  },
+  {
+    id: "aws-dva",
+    title: "AWS Certified Developer – Associate",
+    issuer: "Amazon Web Services",
+    badgeSrc: require("../content/resources/AWS-Certified-Developer-Associate_badge.png")
+  },
+  {
+    id: "csm",
+    title: "Certified Scrum Master",
+    issuer: "Scrum Alliance",
+    badgeSrc: require("../content/resources/sa-csm-600.png")
+  }
+];
 
-
-		<div className="row">
-			<div className="col-md-6 ">
-				<div className="d-flex align-items-center">
-					<i className="fa fa-graduation-cap education-icon cls-width50"></i>
-					<h5>Education</h5>
-				</div>
-
-                <div className="row"><br/></div>
-
-				<div className="mb-4 text-left">
-					<h6>Master of Computer Applications</h6>
-						<p>Madras University, Chennai, India (2000 - 2003)</p>
-				</div>
-				<div className="mb-4 text-left">
-					<h6>Bachelor of Computer Science</h6>
-						<p>Bharathiar University, Coimbatore, India (1996 - 1999)</p>
-				</div>
-			</div>
-
-
-			<div className="col-md-6 role">
-				<div className="d-flex align-items-center cls-justify-content-center"  >
-					<i className="fa fa-eye  education-icon cls-width50"  ></i>
-					<h5>Certifications</h5>
-				</div>
-				<div className="row">
-<div className="row"><br/></div>
-					<div className="row">
-						<div className="col-md-2  col-xs-2">
-							<img src={ require("../content/resources/AWS-Certified-SA-Associate_badge.png")} alt="AWS Icon"
-								className="img-fluid mb-3 zoom cls-width50" />
-						</div>
-
-						<div className="col-md-10">
-							<h6 className="col-xs-1 text-left">AWS Certified Solution Architect - Associate</h6>
-							<p className="col-xs-1 text-left"><strong>Amazon Web Services</strong></p>
-						</div>
-
-					</div>
-
-<div className="row"><br/></div>
-
-					<div className="row">
-						<div className="col-md-2  col-xs-2">
-							<img src={ require("../content/resources/AWS-Certified-Developer-Associate_badge.png")} alt="AWS Icon"
-								className="img-fluid mb-3 zoom cls-width50" />
-						</div>
-						<div className="col-md-10">
-							<h6 className="col-xs-1 text-left">AWS Certified Developer - Associate</h6>
-							<p className="col-xs-1 text-left"><strong>Amazon Web Services</strong></p>
-						</div>
-					</div>
-
-<div className="row"><br/></div>
-
-					<div className="row">
-						<div className="col-md-2  col-xs-2">
-							<img src={ require("../content/resources/sa-csm-600.png")} alt="CSM Icon" className="img-fluid mb-3 zoom cls-width50"
-								  />
-						</div>
-
-						<div className="col-md-10">
-							<h6 className="col-xs-1 text-left">Certified Scrum Master</h6>
-							<p className="col-xs-1 text-left"><strong>Scrum Alliance</strong></p>
-						</div>
-
-					</div>
-
-
-				</div>
-
-			</div>
-		</div>
-	  </section> 
-  );
+function resolveAssetSrc(asset) {
+  if (!asset) return null;
+  return typeof asset === "string" ? asset : asset.default || null;
 }
 
-export default education
+export default function Education() {
+  return React.createElement(
+    "section",
+    { className: "education-section", id: "education" },
+    React.createElement(
+      "div",
+      { className: "education-container" },
+      React.createElement(
+        "header",
+        { className: "education-intro" },
+       // React.createElement("span",{ className: "education-eyebrow" },"ACADEMIC & CREDENTIALS" ),
+        React.createElement("h3", null, "Education & Certifications"),
+        React.createElement(
+          "p",
+          null,
+          "Foundational computer science degrees alongside industry-recognized cloud and Agile credentials."
+        )
+      ),
+      React.createElement(
+        "div",
+        { className: "education-grid" },
+        React.createElement(
+          "article",
+          { className: "education-card" },
+          React.createElement(
+            "div",
+            { className: "education-card-header" },
+            React.createElement(
+              "div",
+              { className: "education-card-icon", "aria-hidden": "true" },
+              React.createElement("i", { className: "fa fa-graduation-cap" })
+            ),
+            React.createElement(
+              "div",
+              null,
+              React.createElement("h3", null, "Education"),
+              React.createElement(
+                "p",
+                { className: "education-card-sub" },
+                "University degrees"
+              )
+            )
+          ),
+          React.createElement(
+            "div",
+            { className: "education-list" },
+            EDUCATION_ITEMS.map((item) =>
+              React.createElement(
+                "div",
+                { key: item.id, className: "education-entry" },
+                React.createElement(
+                  "div",
+                  { className: "education-entry-top" },
+                  React.createElement("h4", null, item.degree),
+                  React.createElement(
+                    "span",
+                    { className: "education-period-pill" },
+                    item.period
+                  )
+                ),
+                React.createElement(
+                  "p",
+                  { className: "education-institution" },
+                  `${item.institution} · ${item.location}`
+                )
+              )
+            )
+          )
+        ),
+        React.createElement(
+          "article",
+          { className: "education-card" },
+          React.createElement(
+            "div",
+            { className: "education-card-header" },
+            React.createElement(
+              "div",
+              { className: "education-card-icon", "aria-hidden": "true" },
+              React.createElement("i", { className: "fa fa-award" })
+            ),
+            React.createElement(
+              "div",
+              null,
+              React.createElement("h3", null, "Certifications"),
+              React.createElement(
+                "p",
+                { className: "education-card-sub" },
+                "Verified cloud & delivery credentials"
+              )
+            )
+          ),
+          React.createElement(
+            "div",
+            { className: "education-cert-list" },
+            CERTIFICATION_ITEMS.map((cert) => {
+              const src = resolveAssetSrc(cert.badgeSrc);
+              return React.createElement(
+                "div",
+                { key: cert.id, className: "education-cert-item" },
+                React.createElement(
+                  "div",
+                  { className: "education-badge-frame" },
+                  src &&
+                    React.createElement("img", {
+                      src,
+                      alt: `${cert.title} badge`,
+                      className: "education-badge-img"
+                    })
+                ),
+                React.createElement(
+                  "div",
+                  { className: "education-cert-body" },
+                  React.createElement("h4", {className: "cert-name"}, cert.title),
+                  React.createElement(
+                    "span",
+                    { className: "education-cert-issuer" },
+                    cert.issuer
+                  )
+                )
+              );
+            })
+          )
+        )
+      )
+    )
+  );
+}

@@ -30,12 +30,7 @@ const introduction = () => {
 				<h1 className="mb-1 text-left">Ashok M K</h1>
 				<h3 className="mb-1 ml-0 text-left">Digital Transformation Leader</h3>
 				<br/>
-				<p className='mb-1 intro-font'>Experienced .NET Solution Architect with extensive experience in designing, modernizing, and delivering enterprise-scale, secure, and
-scalable applications using .NET Framework, ASP.NET Core, C#, and microservices architecture. Strong background in cloud-native
-solution design, Identity & Access Management (IAM), and API-led integrations across Azure and AWS platforms. Proven ability to
-translate complex business requirements into robust technical architectures, lead cross-functional teams, and govern end-to-end solution
-delivery in Agile environments and cognitive automation. Recognized for combining hands-on technical depth with architectural vision to
-build resilient, high-performance systems aligned with business objectives.</p>
+				<p className='mb-1 intro-font'>Experienced AI led .NET Solution Architect with extensive experience in designing, modernizing, and delivering enterprise-scale, secure, and scalable applications using .NET Framework, ASP.NET Core, C#, and microservices architecture. Strong background in cloud-native solution design, Identity & Access Management (IAM), and API-led integrations across Azure and AWS platforms. Proven ability to translate complex business requirements into robust technical architectures, lead cross-functional teams, and govern end-to-end solution delivery in Agile environments and cognitive automation. Recognized for combining hands-on technical depth with architectural vision to build resilient, high-performance systems aligned with business objectives.</p>
 				{/*<p className="mb-1">Seasoned leader in spearheading business-aligned IT transformations and building secure, scalable cloud ecosystems. Known for formulating IT modernization roadmaps and optimizing process automation to improve delivery efficiency and resilience. Strong advocate for cross-functional collaboration, stakeholder engagement, and talent upskilling. Proven track record of managing full-scope solution implementation—right from business analysis and system architecture to post-deployment support. Adept in leveraging AWS infrastructure to develop high-performance, secure, and cost-effective enterprise applications.</p>
                  */}
 				<br/><p className='intro-font'>Certified AWS Solutions Architect with a strong command of architecting secure, scalable, and

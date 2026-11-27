@@ -1,100 +1,132 @@
-import React from 'react';
-import "../css/skills.css";
-import "../css/workExperience.css";
-import '@fortawesome/fontawesome-free/css/all.min.css' ;
-import 'bootstrap/dist/css/bootstrap.min.css' ;
+import React from "react";
+import "../css/projects.css";
 
-const projects = () => {
-  return (
-    <section id="Project" className="container my-3" >
-		<h3 className="text-left">Projects</h3> 
-		<div className="row"> 
-				<p className="text-center" >Key achievements and realizations to date include but are not limited to the major initiatives below <br/> delivering constantly business values over years:</p>
-				 <div className="row">
-					<div className="col-md-4 equal-height-col">
-						<div className="proj-box" >
-							<div className="project-name proj-def">
-								Identity Audit & Compliance Manager
-							<br/>Clients: SP Services (Singapore Power), SMRT, Singapore.
-							<br/>
-							<a href="https://deepidentity.com/products">https://deepidentity.com/products</a>
-							</div>
-							<div  className="proj-details">
-										13 IAM connectors; 2500 users; 27 endpoint systems; S$1.2 million budget
-							</div>
-						</div>
-					</div>
-							 
-					<div className="col-md-4 equal-height-col">
-						<div className="proj-box-1" >
-							<div className="project-name proj-def">
-								CSC - eLearning LEARN
-							<br/>Client: Civil Service College, Singapore.
-							<br/>
-							<a href="http://learn.gov.sg/">http://learn.gov.sg/</a>
-							</div>
-							<div  className="proj-details">
-										200k users; Multi-tenant e-learning platform suite for government employees integrate with Harvard, Udemy & LinkedIn Learning platform.
-							</div>
-						</div>
-					</div>
+const PROJECTS_DATA = [
+  {
+    id: "iam-compliance-manager",
+    title: "Identity Audit & Compliance Manager",
+    client: "Clients: SP Services (Singapore Power), SMRT, Singapore",
+    url: "https://deepidentity.com/products",
+    urlLabel: "deepidentity.com/products",
+    description:
+      "Enterprise identity governance and compliance solution enabling automated auditing, access reviews, and policy enforcement across connected enterprise applications.",
+    metrics: ["13 IAM connectors", "2,500 users", "27 endpoint systems", "S$1.2M budget"]
+  },
+  {
+    id: "csc-elearning-learn",
+    title: "CSC – eLearning LEARN",
+    client: "Client: Civil Service College, Singapore",
+    url: "http://learn.gov.sg/",
+    urlLabel: "learn.gov.sg",
+    description:
+      "Multi-tenant learning platform suite for public-sector employees integrated with external learning catalogs including Harvard, Udemy, and LinkedIn Learning.",
+    metrics: ["200k users", "Multi-tenant suite", "External catalog integrations"]
+  },
+  {
+    id: "terrafirma-edit",
+    title: "TerraFirma & Enrichment Service EDIT",
+    client: "Product Owner: Credit Suisse",
+    description:
+      "Equity derivative investment trade management and enrichment service that captures, validates, displays, and manages equity derivative orders.",
+    metrics: ["Equity derivatives", "Trade enrichment", "Investment banking"]
+  },
+  {
+    id: "structured-note-batch",
+    title: "Structured Note Batch Processing System",
+    client: "Product Owner: Credit Suisse",
+    description:
+      "Batch ETL and workflow processing platform coordinated via Control-M to manage reliable data movement across upstream and downstream investment banking systems.",
+    metrics: ["Control-M batch scheduling", "Upstream/downstream ETL", "Investment banking"]
+  },
+  {
+    id: "magnum-infinity-his",
+    title: "Magnum Infinity HIS",
+    client: "Hospital Management Suite",
+    description:
+      "Comprehensive Hospital Information System computerizing core clinical operations and administrative workflows across hospital departments.",
+    metrics: ["Clinical & admin workflows", "Hospital management"]
+  },
+  {
+    id: "magnum-kiosk",
+    title: "Magnum Kiosk",
+    client: "Client: Aditya Birla Memorial Hospital, Pune, India",
+    description:
+      "Flexible and scalable self-service information utility tailored for healthcare providers and patient touchpoints.",
+    metrics: ["Healthcare providers", "Scalable kiosk utility"]
+  }
+];
 
-					<div className="col-md-4 equal-height-col">
-						<div className="proj-box" >
-							<div className="project-name proj-def">
-								TerraFirma & Enrichment Service EDIT
-							<br/>Product Owner: Credit-Suisse Bank	 
-						 	</div>
-							<div  className="proj-details">
-								TerraFirma Enrichment Service, is an Equity Derivative Investment Trade management system captures, displays, and manages Equity Derivatives orders.
-							</div>
-						</div>
-					</div>
-				</div>
-				 
-				<div className="row my-1">
-					<div className="col-md-4 equal-height-col">
-						<div className="proj-box-1" >
-							<div className="project-name proj-def">
-								Structured Note Batch Processing System
-							<br/>Product Owner: Credit-Suisse Bank 
-							</div>
-							<div  className="proj-details">
-								ETL applications managed by a batch processing tool Control-M, manage data flow between Upstream and Downstream systems of investment banking system.
-							</div>
-						</div>
-					</div>
-
-					<div className="col-md-4 equal-height-col">
-						<div className="proj-box" >
-							<div className="project-name proj-def">
-								Magnum Infinity HIS
-							<br/>Hospital Management Suite			 
-						 
-							</div>
-							<div  className="proj-details">
-								Magnum HIS is a comprehensive Hospital Information System that computerizes principal operations and administrative functions in a hospital.
-							</div>
-						</div>
-					</div>
-
-					<div className="col-md-4 equal-height-col">
-						<div className="proj-box" >
-							<div className="project-name proj-def">
-								Magnum Kiosk
-							<br/>Client: Aditya Birla Memorial Hospital, Pune, India		 
-						 
-							</div>
-							<div  className="proj-details">
-								Magnum Kiosk is a highly flexible and scalable information utility tool, designed especially for Healthcare Providers.
-							</div>
-						</div>
-					</div>
-				</div>
-		</div>
-		
-	</section> 
+export default function Projects() {
+  return React.createElement(
+    "section",
+    { className: "projects-section", id: "projects" },
+    React.createElement(
+      "div",
+      { className: "projects-container" },
+      React.createElement(
+        "header",
+        { className: "projects-intro" },
+        // React.createElement(
+        //   "span",
+        //   { className: "projects-eyebrow" },
+        //   "KEY INITIATIVES & OUTCOMES"
+        // ),
+        React.createElement("h3", null, "Projects"),
+        React.createElement(
+          "p",
+          {className: "projects-intro"},
+          "Selected enterprise platforms, identity and banking systems, and healthcare solutions delivered across multi-year engagements."
+        )
+      ),
+      React.createElement(
+        "div",
+        { className: "projects-grid" },
+        PROJECTS_DATA.map((project) =>
+          React.createElement(
+            "article",
+            { key: project.id, className: "project-card" },
+            React.createElement(
+              "div",
+              { className: "project-card-header" },
+              React.createElement("h3", null, project.title),
+              project.client &&
+                React.createElement(
+                  "p",
+                  { className: "project-client" },
+                  project.client
+                ),
+              project.url &&
+                React.createElement(
+                  "a",
+                  {
+                    href: project.url,
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                    className: "project-link"
+                  },
+                  project.urlLabel || project.url
+                )
+            ),
+            React.createElement(
+              "p",
+              { className: "project-description" },
+              project.description
+            ),
+            project.metrics?.length > 0 &&
+              React.createElement(
+                "div",
+                { className: "project-metrics" },
+                project.metrics.map((metric) =>
+                  React.createElement(
+                    "span",
+                    { key: metric, className: "project-metric-pill" },
+                    metric
+                  )
+                )
+              )
+          )
+        )
+      )
+    )
   );
 }
-
-export default projects
